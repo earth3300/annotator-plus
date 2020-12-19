@@ -20,25 +20,26 @@ Author URI: http://okfn.org/projects/annotator/
 License: GPLv2 or later
 */
 
+if ( is_user_logged_in() )
+{
+  foreach(array(
+    'lib/wp-pluggable',
+    'vendor/Mustache',
+    'lib/okfn-utils',
+    'lib/okfn-base',
+    'lib/okfn-annot-settings',
+    'lib/okfn-annot-content-policy',
+    'lib/okfn-annot-injector',
+    'lib/okfn-annot-factory',
+  ) as $lib) require_once("${lib}.php");
 
-foreach(array(
-  'lib/wp-pluggable',
-  'vendor/Mustache',
-  'lib/okfn-utils',
-  'lib/okfn-base',
-  'lib/okfn-annot-settings',
-  'lib/okfn-annot-content-policy',
-  'lib/okfn-annot-injector',
-  'lib/okfn-annot-factory',
-) as $lib) require_once("${lib}.php");
+  $settings = new OkfnAnnotSettings;
 
-$settings = new OkfnAnnotSettings;
-
-if (!is_admin()) {
-  $factory  = new OkfnAnnotFactory($settings);
-  $content_policy  = new OkfnAnnotContentPolicy($settings);
-  $injector = new OkfnAnnotInjector($factory, $content_policy);
-  $injector->inject();
+  if (!is_admin())
+  {
+    $factory  = new OkfnAnnotFactory($settings);
+    $content_policy  = new OkfnAnnotContentPolicy($settings);
+    $injector = new OkfnAnnotInjector($factory, $content_policy);
+    $injector->inject();
+  }
 }
-
-?>
