@@ -11,7 +11,7 @@
 
 
 /*
-Plugin Name: Annotator
+Plugin Name: Annotator Plus
 Plugin URI: https://github.com/okfn/annotator-wordpress
 Description: Adds inline annotations to Wordpress using the amazing <a href="http://annotateit.org">Annotator</a> widget (by the Open Knowledge Foundation).  Adjusted to require user to be logged in.
 Version: 0.4
